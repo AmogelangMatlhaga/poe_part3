@@ -4,9 +4,504 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:poe_part3"
-        mc:Ignorable="d"
+               mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Height="450px" Width="800px">
+
+        <!-- grid page for asking for asking the user for their username -->
+        <Grid
+            Height="450px"
+            Width="800px"
+            x:Name="username_page"
+            Background="Black"
+            Visibility="Visible"
+            >
+            <!-- exit button -->
+            <Button
+                Height="40px"
+                Width="50px"
+                Content="X" Foreground="Red"
+                Background="Black"
+                FontSize="20px"
+                Margin="735,0,0,410"
+                BorderBrush="Black"
+                Click="exitButton"
+                />
+            <!-- Displaying the logo -->
+            <Border
+                Height="180px"
+                Width="200px"
+                CornerRadius="150"
+                Margin="0,0,0,250"
+                >
+                <Image
+                Source="/images/LOGO2.jpeg"
+                Stretch="Fill"
+                />
+            </Border>
+            <!-- displaying message to alert the user what to do and what to expect-->
+            <TextBlock
+                Height="18px"
+                Width="300px"
+                Foreground="SkyBlue"
+                Text="Welcome to ChatBot AI"
+                TextAlignment="Center"
+                
+                />
+            <TextBlock
+                  Height="18px"
+                  Width="390px"
+                  Foreground="SkyBlue"
+                  Text="Please enter your username below so that we can use it to personalise"
+                  TextAlignment="Center"
+                            Margin="0,38,0,0"
+      
+                  />
+            <TextBlock
+                      Height="18px"
+                      Width="380px"
+                      Foreground="SkyBlue"
+                      Text="all the chats, reminders and more"
+                      TextAlignment="Center"
+                                Margin="0,68,0,0"
+      
+                      />
+
+            <!-- textbox to collect the username -->
+            <TextBox
+                Height="40px"
+                Width="200px"
+                x:Name="username" Foreground="white"
+                BorderBrush="SkyBlue"
+                Background="Black"
+                Margin="0,150,0,0"
+                />
+
+            <!-- username submittion button-->
+            <Button
+                Height="40px"
+                Width="100px"
+                Content="submit" Foreground="white"
+                FontSize="15px"
+                Background="SkyBlue"
+                Click="usernameSubmit"
+                Margin="0,260,0,0"
+                />
+
+
+
+
+        </Grid>
+        <!--end of the username request grid-->
+
+        <!-- main page grid -->
+        <Grid
+            Height="450px"
+            Width="800px"
+            x:Name="main_page"
+            Background="Black"
+            Visibility="Hidden"
+            >
+
+            <!-- navigation/menu grid-->
+            <Grid
+            Height="100px"
+            Width="800px"
+            x:Name="menu_page"
+            Margin="0,340,0,0"
+            Background="Black"
+            >
+                <!-- menu buttons -->
+                <Button
+                Height="40px"
+                Width="100px"
+                Content="chats" Foreground="white"
+                Background="SkyBlue"
+                Click="chatsButton"
+                FontSize="15px"
+                Margin="0,0,610,0"
+                />
+                <Button
+                Height="40px"
+                Width="100px"
+                Content="Activity Log" Foreground="white"
+                Background="SkyBlue"
+                Click="historyButton"
+                FontSize="15px"
+                Margin="0,0,380,0"
+                />
+                <Button
+                Height="40px"
+                Width="200px"
+                Content="reminders and  history" Foreground="White"
+                Background="SkyBlue"
+                FontSize="15px"
+                Click="favoritesButton"
+                Margin="50,0,110,0"
+                />
+                <Button
+                Height="40px"
+                Width="100px"
+                Content="quiz" Foreground="White"
+                Background="SkyBlue"
+                FontSize="15px"
+                Click="quizButton"
+                Margin="300,0,30,0"
+                />
+                <Button
+                Height="40px"
+                Width="100px"
+                Content="exit" Foreground="white"
+                Background="Red"
+                FontSize="15px"
+                Click="exitButton"
+                Margin="500,0,0,0"
+                />
+
+            </Grid>
+            <!-- end of navigation grid-->
+
+
+            <!-- chats page grid -->
+            <Grid
+                Height="350px"
+                Width="800px"
+                x:Name="chats_page"
+                Margin="0,0,0,100"
+                Visibility="Visible"
+                >
+                <ListView
+                    Height="200px"
+                    Width="700px"
+                    x:Name="chat_list"
+                    Margin="0,20,0,50"
+                    Background="Transparent"
+                    BorderBrush="SkyBlue"
+                    Foreground="white"
+                 />
+
+                <TextBox
+                    Height="40px"
+                    Width="600px"
+                    x:Name="question"
+                    BorderBrush="SkyBlue"
+                    Foreground="SkyBlue"
+                    Margin="0,255,100,45"
+                    Background="Transparent"
+                    FontSize="20px"
+                   
+                    />
+                <Button
+                    Height="40px"
+                    Width="100px"
+                    Margin="600,255,0,45"
+                    Background="SkyBlue"
+                    BorderBrush="SkyBlue"
+                    Content="ask" Foreground="White" HorizontalContentAlignment="Center"
+                    FontSize="20px"
+                    Click="questionAskButton"
+                    />
+
+            </Grid>
+            <!-- end of chat page grid-->
+
+            <!--history page grid -->
+            <Grid
+                Height="350px"
+                Width="800px"
+                Margin="0,0,0,100"
+                x:Name="history_page"
+                Visibility="Hidden"
+                >
+
+                <ListView
+                    Height="200px"
+                    Width="700px"
+                    x:Name="history_list"
+                    Margin="0,20,0,50"
+                    Background="Transparent"
+                    Foreground="White"
+                    BorderBrush="SkyBlue"
+                    />
+                <Button
+                    Height="40px"
+                    Width="100px"
+                    Background="SkyBlue"
+                    BorderBrush="SkyBlue"
+                    FontSize="20px"
+                    Content="reload" Foreground="White"
+                    Margin="0,250,250,0"
+                    Click="reloadButton"
+                    />
+                <Button
+                    Height="40px"
+                    Width="100px"
+                    Background="Green"
+                    BorderBrush="Green"
+                    FontSize="20px"
+                    Content="save" Foreground="white"
+                    Margin="250,250,0,0"
+                    Click="saveButton"
+                    />
+                <Button
+                    Height="40px"
+                    Width="100px"
+                    Background="red"
+                    BorderBrush="red"
+                    FontSize="20px"
+                    Content="clear" Foreground="white"
+                    Margin="0,250,0,0" Click="Button_Click"
+                    />
+
+            </Grid>
+            <!-- end of history page grid -->
+
+            <!-- reminders grid -->
+            <Grid
+            Height="350px"
+            Width="800px"
+            x:Name="reminders_page"
+            Margin="0,0,0,100"
+            Background="Black"
+            Visibility="Hidden"
+            >
+
+                <TextBlock
+                Height="50px"
+                Width="200px"
+                Text="Saved Reminders"
+                Foreground="SkyBlue"
+                FontSize="20px"
+                Margin="0,0,500,280"
+                />
+                <ListView
+                Height="300px"
+                Width="700px"
+                x:Name="favReminder_list"
+                Background="Transparent"
+                BorderBrush="SkyBlue"
+                FontSize="15px"
+                Foreground="white"
+                MouseDoubleClick="favReminder_list_MouseDoubleClick"
+                Margin="0,30,0,0"
+                />
+                <Button
+                Height="30px"
+                Width="120px"
+                Margin="590,0,0,300"
+                Background="Transparent"
+                BorderBrush="Black"
+                Content="open history"
+                FontSize="20px"
+                Foreground="red"
+                Click="openReminder"
+                />
+
+            </Grid>
+            <!-- end of reminders grid -->
+
+            <!-- saved conversations grid -->
+            <Grid
+            Height="350px"
+            Width="800px"
+            x:Name="savedConversations_page"
+            Margin="0,0,0,100"
+            Background="Black"
+            Visibility="Hidden"
+            >
+                <TextBlock
+                Height="50px"
+                Width="200px"
+                Text="Saved Conversations"
+                FontSize="20px"
+                Foreground="SkyBlue"
+                Margin="0,0,500,280"
+                />
+                <ListView
+                Height="300px"
+                Width="700px"
+                x:Name="favSaved_list"
+                Margin="0,30,0,0"
+                Background="Transparent"
+                BorderBrush="SkyBlue"
+                Foreground="white"
+                FontSize="15px"
+                />
+                <Button
+                Height="30px"
+                Width="150px"
+                Margin="560,0,0,300"
+                Background="Transparent"
+                BorderBrush="Black"
+                Content="open reminders" Foreground="Red"
+                FontSize="20px"
+                Click="openConversation"
+                />
+
+
+            </Grid>
+            <!-- end of saved conversations grid-->
+
+            <!-- quiz game landing page grid -->
+            <Grid
+            Height="350px"
+            Width="800px"
+            Background="Black"
+            Margin="0,0,0,100"
+            x:Name="quizLogo_page"
+            Visibility="Hidden"
+            >
+
+                <Grid
+    Height="400px"
+    Width="800px"
+    Background="Black"
+    Margin="0,0,0,0"
+    x:Name="quiz_logo"
+    Visibility="Visible"
+    >
+
+
+                    <Image
+                Height="200px"
+                Width="200px"
+                Source="/images/quiz.png"
+                Stretch="Fill"
+                Margin="0,0,0,130"
+                />
+                    <TextBlock
+                Height="20px"
+                Width="260px"
+                Text="Welcome, Player! Ready to test your knowledge?" TextAlignment="Center"
+                Foreground="SkyBlue"
+                Margin="0,100,0,0"
+                />
+                    <TextBlock
+                Height="20px"
+                Width="200px"
+                Text="press start to continue"
+                Foreground="SkyBlue" TextAlignment="Center"
+                Margin="0,130,0,0"
+                />
+                    <Button
+   Height="30px"
+   Width="100px"
+   Content="start" Foreground="White" VerticalContentAlignment="Center"
+   Background="SkyBlue"
+   FontSize="15px"
+   Margin="0,200,0,0"
+                        Visibility="Visible"
+   Click="startQuizButton"
+                />
+                </Grid>
+                <!-- end of quiz landing page  grid-->
+
+                <!-- mini quiz game grid-->
+                <Grid
+            Height="390px"
+            Width="800px"
+            x:Name="quizGame_page"
+            Visibility="Hidden"
+            Margin="0,0,0,0"
+            >
+
+                    <TextBlock
+            Height="50px"
+            Width="800px"
+            Text="Mini Quiz Game" Foreground="SkyBlue" TextAlignment="Center"
+            FontSize="25px"
+            Margin="0,0,0,300"
+            />
+                    <TextBlock
+            Height="50px"
+            Width="300px"
+            Text="Question" Foreground="SkyBlue" TextAlignment="Center"
+            FontSize="20px"
+            x:Name="question_asked"
+            Margin="0,0,0,210"
+            />
+
+                    <Button
+            Height="40px"
+            Width="300px"
+            Background="SkyBlue"
+            Content=""
+            Foreground="white"
+            FontSize="10px"
+            Margin="0,0,330,120"
+            x:Name="optionButtonOne"
+            Click="optionSelected"
+            />
+
+                    <Button
+            Height="40px"
+            Width="300px"
+            Background="SkyBlue"
+            Content=""
+            Foreground="white"
+            FontSize="10px"
+            Margin="330,0,0,120"
+            x:Name="optionButtonTwo"
+            Click="optionSelected"
+            />
+
+
+                    <Button
+            Height="40px"
+            Width="300px"
+            Background="SkyBlue"
+            Content=""
+            Foreground="white"
+            FontSize="10px"
+            Margin="0,0,330,0"
+            x:Name="optionButtonThree"
+            Click="optionSelected"
+            />
+
+                    <Button
+            Height="40px"
+            Width="300px"
+            Background="SkyBlue"
+            Content=""
+            Foreground="white"
+            FontSize="10px"
+            Margin="330,0,0,0"
+            x:Name="optionButtonFour"
+            Click="optionSelected"
+            />
+
+                    <Button
+            Height="40px"
+            Width="100px"
+            Background="green"
+            Content="Answer"
+            Foreground="white" HorizontalContentAlignment="Center"
+            Margin="0,140,0,0"
+            Click="answerButton"
+            />
+
+                    <TextBlock
+            Height="60px"
+            Width="100px"
+            Text="" Foreground="White" TextAlignment="Center"
+            FontSize="20px"
+            Margin="0,270,0,0"
+            Background="SkyBlue"
+            x:Name="score_count"
+            />
+
+
+                </Grid>
+
+                <!-- end of mini quiz game grid-->
+
+
+
+            </Grid>
+        </Grid>
+        <!-- end of main page grid -->
 
     </Grid>
 </Window>
