@@ -1,6 +1,8 @@
 ﻿namespace poe_part3
 {
-    internal class SentimentData
+    public class SentimentData
     {
+        public string Text { get; set; }
+        public bool Label { get; set; }
     }
 }
