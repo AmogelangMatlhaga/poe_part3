@@ -115,7 +115,7 @@ public partial class MainWindow : Window
 
 
             //greeting the user using their name
-            chat_list.Items.Add("\n                                                                    Hey " + collected_username.UsernameCollection() + ", Welcome to Chatbot AI.");
+            chat_list.Items.Add("\nHey " + collected_username.UsernameCollection() + ", Welcome to Chatbot AI.");
 
 
         }
